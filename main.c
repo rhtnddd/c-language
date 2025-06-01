@@ -245,7 +245,6 @@ int main(void)
 //             if(a[i][j]!=a[j][i])
 //             {
 //                 sum++;
-//                 printf("0");
 //             }
 //         }
 //     }
@@ -253,6 +252,10 @@ int main(void)
 //     {
 //         printf("1");
 //     }
+//     else{
+//         printf("0");
+//     }
+//     return 0;
 // }
 // #include <stdio.h>
 // int main(void)
