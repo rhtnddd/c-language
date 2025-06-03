@@ -18,16 +18,16 @@ int main(void)
     printf("선택을 유지했을 때 확률 : %.2f%% \n선택을 유지하지 않았을 때 확률: %.2f%%\n",(float)change/10000*100,(float)no_change/10000*100);
     return 0;
 }*/
-#include <stdio.h>
-int main(void)
-{
-    int a[5];
-    for(int i=0;i<4;i++)
-    {
-        scanf("%d",&a[i]);
-    }
-    for(int i=0;i<4;i++)
-    {
-        printf("%d",a[i]);
-    }
-}
+// #include <stdio.h>
+// int main(void)
+// {
+//     int a[5];
+//     for(int i=0;i<4;i++)
+//     {
+//         scanf("%d",&a[i]);
+//     }
+//     for(int i=0;i<4;i++)
+//     {
+//         printf("%d",a[i]);
+//     }
+// }
