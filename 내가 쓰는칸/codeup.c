@@ -61,10 +61,37 @@
 // 		printf("과체중");
 // 	}
 // }
+// #include <stdio.h>
+// int main(void)
+// {
+//     float a,b,c;
+//     scanf("%f %f %f", &a,&b,&c);
+//     printf("%.2f", (a+b+c)/3);
+// }
 #include <stdio.h>
+void k(int a)
+{
+	if (a == 0)
+	{
+		return;
+	}
+	printf("*");
+	k(a -1);
+}
+void f(int a, int b)
+{
+	if (b > a)
+	{
+		return;
+	}
+	k(b);
+	printf("\n");
+	f(a, b + 1);
+}
 int main(void)
 {
-    float a,b,c;
-    scanf("%f %f %f", &a,&b,&c);
-    printf("%.2f", (a+b+c)/3);
+	int a;
+	scanf("%d", &a);
+	f(a,1);
+	return 0;
 }
