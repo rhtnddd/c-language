@@ -95,17 +95,33 @@
 // 	f(a,1);
 // 	return 0;
 // }
+// #include <stdio.h>
+// int main(void)
+// {
+//     for(int i=0;i<20;i++)
+//     {
+//         printf("hello");
+//     }
+//     printf(" ");
+//     for(int i=0;i<30;i++)
+//     {
+//         printf("world");
+//     }
+//     return 0;
+// }
 #include <stdio.h>
 int main(void)
 {
-    for(int i=0;i<20;i++)
-    {
-        printf("hello");
-    }
-    printf(" ");
-    for(int i=0;i<30;i++)
-    {
-        printf("world");
-    }
-    return 0;
+	int a;
+	int b[10000];
+	scanf("%d", &a);
+	for (int in = 0; in < a; in++)
+	{
+		scanf("%d", &b[in]);
+	}
+	for (int i = a-1; i >= 0; i--)
+	{
+		printf("%d ",b[i]);
+	}
 }
+
