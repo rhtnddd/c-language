@@ -84,9 +84,15 @@
 //     scanf("%d",&m);
 //     f(m);
 // }
-#include <stdio.h>
-int main(void)
-{
-    int a=5<<2;
-    printf("%d",a);
-}
+// #include <stdio.h>
+// int main(void)
+// {
+//     float a=10;
+//     if(a==10)
+//     {
+//         printf("1");
+//     }
+//     else{
+//         printf("0");
+//     }
+// }

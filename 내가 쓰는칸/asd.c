@@ -12,7 +12,7 @@
 //         }
 //     }
 //     printf("%lld\n",sum);
-//     printf("%lld",(a/6)*(b/6)*6);
+//     printf("%lld",(a/sum)*(b/sum)*sum);
 // }
 // #include <stdio.h>
 // int main(void)
@@ -28,21 +28,21 @@
 //         printf("\n");
 //     }
 // }
-#include <stdio.h>
-int main(void)
-{
-    int a,b,c,sum;
-    scanf("%d %d %d %d",&a,&b,&c,&sum);
-    c+=sum%60;
-    if(c>=60)
-    {
-        b+=c/60;
-    }
-    b+=sum/60;
-    if(b>=60)
-    {
-        a+=b/60;
-    }
-    a+=sum/3600;
-    printf("%d %d %d",a,b,c);
-}
+// #include <stdio.h>
+// int main(void)
+// {
+//     int a,b,c,sum;
+//     scanf("%d %d %d %d",&a,&b,&c,&sum);
+//     c+=sum%60;
+//     if(c>=60)
+//     {
+//         b+=c/60;
+//     }
+//     b+=sum/60;
+//     if(b>=60)
+//     {
+//         a+=b/60;
+//     }
+//     a+=sum/3600;
+//     printf("%d %d %d",a,b,c);
+// }
