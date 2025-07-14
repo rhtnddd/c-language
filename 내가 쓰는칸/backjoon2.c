@@ -1,110 +1,25 @@
 #include <stdio.h>
 int main(void)
 {
-    int a,b,c;
-    int sum[100000],i=0;
-    for(;;)
+    int n;
+    int a[1001];
+    double sum = 0;
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
     {
-        scanf("%d %d %d",&a,&b,&c);
-        if(a==0&&b==0&&c==0)
+        scanf("%d", &a[i]);
+    }
+    int max = 0;
+    for (int j = 1; j < n; j++)
+    {
+        if (a[max] <= a[j])
         {
-            break;
-        }
-        if(a<=b&&a<=c)
-        {
-            if(b<=c)
-            {
-                if(a*a+b*b==c*c)
-                {
-                    sum[i]=1;
-                    i++;
-                }
-                else
-                {
-                    sum[i]=0;
-                    i++;
-                }
-            }
-            else{
-                if(a*a+c*c==b*b)
-                {
-                    sum[i]=1;
-                    i++;
-                }
-                else
-                {
-                    sum[i]=0;
-                    i++;
-                }
-            }
-        }
-        else if(b<=a&&b<=c)
-        {
-            if(a<=c)
-            {
-                if(a*a+b*b==c*c)
-                {
-                    sum[i]=1;
-                    i++;
-                }
-                else
-                {
-                    sum[i]=0;
-                    i++;
-                }
-            }
-            else{
-                if(b*b+c*c==a*a)
-                {
-                    sum[i]=1;
-                    i++;
-                }
-                else
-                {
-                    sum[i]=0;
-                    i++;
-                }
-            }
-        }
-        else if(c<=a&&c<=b)
-        {
-            if(a<=b)
-            {
-                if(a*a+c*c==b*b)
-                {
-                    sum[i]=1;
-                    i++;
-                }
-                else
-                {
-                    sum[i]=0;
-                    i++;
-                }
-            }
-            else{
-                if(b*b+c*c==a*a)
-                {
-                    sum[i]=1;
-                    i++;
-                }
-                else
-                {
-                    sum[i]=0;
-                    i++;
-                }
-            }
+            max = j;
         }
     }
-    for(int j=0;j<i;j++)
+    for (int i = 0; i < n; i++)
     {
-        if(sum[j]==1)
-        {
-            printf("right\n");
-        }
-        else
-        {
-            printf("wrong\n");
-        }
+        sum += ((double)a[i] / a[max]) * 100;
     }
-    return 0;
+    printf("%lf", sum / n);
 }
