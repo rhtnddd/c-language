@@ -1,14 +1,20 @@
 #include <stdio.h>
-int main() {
-    int X, Y;
-    scanf("%d %d", &X, &Y);
-    int num1 = 0, num2 = 0;
-    for (int i = 0; i < X; i++) {
-        num1 = num1 * 10 + 1;
+int main(void)
+{
+    int a,b;
+    for(;;)
+    {
+        scanf("%d %d",&a,&b);
+        if(a==0&&b==0)
+        {
+            return 0;
+        }
+        if(a>b)
+        {
+            printf("Yes\n");
+        }
+        else{
+            printf("No\n");
+        }
     }
-    for (int i = 0; i < Y; i++) {
-        num2 = num2 * 10 + 1;
-    }
-    printf("%d\n", num1 + num2);
-    return 0;
 }
