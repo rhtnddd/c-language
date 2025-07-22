@@ -1,31 +1,14 @@
 #include <stdio.h>
-int memo[1000000];
-int f(int n)
-{
-    if(n==1)
-    {
-        return 1;
-    }
-    if(n==2)
-    {
-        return 2;
-    }
-    else if(memo[n]==0)
-    {
-        return memo[n]=(f(n-1)+f(n-2))%100000007;
-    }
-    return memo[n];
-}
+int n[1500000]={0,1,};
 int main(void)
 {
-    int n;
-    scanf("%d",&n);
-    if(n<=2)
+    int i;
+    long long int a;
+    scanf("%lld",&a);
+    int p=a%1500000;
+    for(i=2;i<=p;i++)
     {
-        printf("0");
+        n[i]=(n[i-1]+n[i-2])%1000000;
     }
-    else
-    {
-        printf("%d",f(n-1));
-    }
+    printf("%d",n[p]);
 }
