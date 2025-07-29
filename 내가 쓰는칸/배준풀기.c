@@ -158,15 +158,34 @@
 //     printf("%d\n", count);
 //     return 0;
 // }
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n;
+//     int sum=0;
+//     scanf("%d",&n);
+//     for(int i=5;i<=n;i*=5)
+//     {
+//         sum+=n/i;
+//     }
+//     printf("%d",sum);
+// }
 #include <stdio.h>
 int main(void)
 {
     int n;
-    int sum=0;
+    int a[100000];
+    int first=0;
+    int end=0;
     scanf("%d",&n);
-    for(int i=5;i<=n;i*=5)
+    for(int i=1;i<=n;i++)
     {
-        sum+=n/i;
+        a[end++]=i;
     }
-    printf("%d",sum);
+    for(int i=0;i<n-1;i++)
+    {
+        printf("%d ",a[first++]);
+        a[end++]=a[first++];
+    }
+    printf("%d\n",a[first]);
 }
