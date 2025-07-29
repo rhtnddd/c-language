@@ -170,22 +170,49 @@
 //     }
 //     printf("%d",sum);
 // }
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n;
+//     int a[100000];
+//     int first=0;
+//     int end=0;
+//     scanf("%d",&n);
+//     for(int i=1;i<=n;i++)
+//     {
+//         a[end++]=i;
+//     }
+//     for(int i=0;i<n-1;i++)
+//     {
+//         printf("%d ",a[first++]);
+//         a[end++]=a[first++];
+//     }
+//     printf("%d\n",a[first]);
+// }
 #include <stdio.h>
 int main(void)
 {
     int n;
-    int a[100000];
-    int first=0;
-    int end=0;
+    int a[100][2];
+    int key[100];
     scanf("%d",&n);
-    for(int i=1;i<=n;i++)
+    for(int i=0;i<n;i++)
     {
-        a[end++]=i;
+        scanf("%d %d",&a[i][0],&a[i][1]);
+        key[i]=1;
     }
-    for(int i=0;i<n-1;i++)
+    for(int i=0;i<n;i++)
     {
-        printf("%d ",a[first++]);
-        a[end++]=a[first++];
+        for(int j=0;j<n;j++)
+        {
+            if(a[i][0]<a[j][0]&&a[i][1]<a[j][1])
+            {
+                key[i]++;
+            }
+        }
     }
-    printf("%d\n",a[first]);
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",key[i]);
+    }
 }
