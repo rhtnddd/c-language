@@ -1,3 +1,4 @@
+// 1476문제
 // #include <stdio.h>
 // int main(void)
 // {
@@ -26,6 +27,7 @@
 //     }
 //     printf("%d",sum);
 // }
+// 2751문제
 // #include <stdio.h>
 // int a[1000001];
 // int temp_a[1000001];
@@ -86,6 +88,7 @@
 //     }
 //     return 0;
 // }
+// 1312문제
 // #include <stdio.h>
 // int main() {
 //     int A, B, N;
@@ -101,6 +104,7 @@
 //     }
 //     return 0;
 // }
+//2941문제
 // #include <stdio.h>
 // int custom_strlen(const char* str)
 // {
@@ -158,6 +162,7 @@
 //     printf("%d\n", count);
 //     return 0;
 // }
+// 1676문제
 // #include <stdio.h>
 // int main(void)
 // {
@@ -170,6 +175,7 @@
 //     }
 //     printf("%d",sum);
 // }
+// 2161문제
 // #include <stdio.h>
 // int main(void)
 // {
@@ -189,30 +195,104 @@
 //     }
 //     printf("%d\n",a[first]);
 // }
+//7568문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n;
+//     int a[100][2];
+//     int key[100];
+//     scanf("%d",&n);
+//     for(int i=0;i<n;i++)
+//     {
+//         scanf("%d %d",&a[i][0],&a[i][1]);
+//         key[i]=1;
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         for(int j=0;j<n;j++)
+//         {
+//             if(a[i][0]<a[j][0]&&a[i][1]<a[j][1])
+//             {
+//                 key[i]++;
+//             }
+//         }
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         printf("%d ",key[i]);
+//     }
+// }
+//10845문제
 #include <stdio.h>
+#include <string.h>
 int main(void)
 {
     int n;
-    int a[100][2];
-    int key[100];
-    scanf("%d",&n);
-    for(int i=0;i<n;i++)
+    int first=0;
+    int pop=0;
+    int size=0;
+    char s[10];
+    int sum[100000];
+    scanf("%d", &n);
+    for (int i=0;i<n;i++)
     {
-        scanf("%d %d",&a[i][0],&a[i][1]);
-        key[i]=1;
-    }
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
+        scanf("%s",s);
+        if (strcmp(s,"push")==0)
         {
-            if(a[i][0]<a[j][0]&&a[i][1]<a[j][1])
+            int a;
+            scanf("%d",&a);
+            sum[first++]=a;
+            size++;
+        }
+        else if (strcmp(s,"pop")==0)
+        {
+            if (size==0)
             {
-                key[i]++;
+                printf("-1\n");
+            }
+            else
+            {
+                printf("%d\n",sum[pop++]);
+                size--;
             }
         }
-    }
-    for(int i=0;i<n;i++)
-    {
-        printf("%d ",key[i]);
+        else if (strcmp(s,"size")==0)
+        {
+            printf("%d\n",size);
+        }
+        else if (strcmp(s,"empty")==0)
+        {
+            if (size==0)
+            {
+                printf("1\n");
+            }
+            else
+            {
+                printf("0\n");
+            }
+        }
+        else if (strcmp(s,"front")==0)
+        {
+            if (size==0)
+            {
+                printf("-1\n");
+            }
+            else
+            {
+                printf("%d\n",sum[pop]);
+            }
+        }
+        else if (strcmp(s,"back")==0)
+        {
+            if (size==0)
+            {
+                printf("-1\n");
+            }
+            else
+            {
+                printf("%d\n",sum[first - 1]);
+            }
+        }
     }
 }
