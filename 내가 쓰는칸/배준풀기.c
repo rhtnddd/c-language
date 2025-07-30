@@ -224,75 +224,142 @@
 //     }
 // }
 //10845문제
+// #include <stdio.h>
+// #include <string.h>
+// int main(void)
+// {
+//     int n;
+//     int first=0;
+//     int pop=0;
+//     int size=0;
+//     char s[10];
+//     int sum[100000];
+//     scanf("%d", &n);
+//     for (int i=0;i<n;i++)
+//     {
+//         scanf("%s",s);
+//         if (strcmp(s,"push")==0)
+//         {
+//             int a;
+//             scanf("%d",&a);
+//             sum[first++]=a;
+//             size++;
+//         }
+//         else if (strcmp(s,"pop")==0)
+//         {
+//             if (size==0)
+//             {
+//                 printf("-1\n");
+//             }
+//             else
+//             {
+//                 printf("%d\n",sum[pop++]);
+//                 size--;
+//             }
+//         }
+//         else if (strcmp(s,"size")==0)
+//         {
+//             printf("%d\n",size);
+//         }
+//         else if (strcmp(s,"empty")==0)
+//         {
+//             if (size==0)
+//             {
+//                 printf("1\n");
+//             }
+//             else
+//             {
+//                 printf("0\n");
+//             }
+//         }
+//         else if (strcmp(s,"front")==0)
+//         {
+//             if (size==0)
+//             {
+//                 printf("-1\n");
+//             }
+//             else
+//             {
+//                 printf("%d\n",sum[pop]);
+//             }
+//         }
+//         else if (strcmp(s,"back")==0)
+//         {
+//             if (size==0)
+//             {
+//                 printf("-1\n");
+//             }
+//             else
+//             {
+//                 printf("%d\n",sum[first - 1]);
+//             }
+//         }
+//     }
+// }
+// 11650문제
 #include <stdio.h>
-#include <string.h>
+int temp[100001][2];
+void merge(int arr[][2], int left, int mid, int right) {
+    int i = left;
+    int j = mid + 1;
+    int k = left;
+    while (i <= mid && j <= right)
+    {
+        if (arr[i][0] < arr[j][0] || (arr[i][0] == arr[j][0] && arr[i][1] < arr[j][1]))
+        {
+            temp[k][0] = arr[i][0];
+            temp[k][1] = arr[i][1];
+            i++;
+        }
+        else
+        {
+            temp[k][0] = arr[j][0];
+            temp[k][1] = arr[j][1];
+            j++;
+        }
+        k++;
+    }
+    while (i <= mid)
+    {
+        temp[k][0] = arr[i][0];
+        temp[k][1] = arr[i][1];
+        i++; k++;
+    }
+    while (j <= right)
+    {
+        temp[k][0] = arr[j][0];
+        temp[k][1] = arr[j][1];
+        j++; k++;
+    }
+    for (int l = left; l <= right; l++)
+    {
+        arr[l][0] = temp[l][0];
+        arr[l][1] = temp[l][1];
+    }
+}
+void merge_sort(int arr[][2], int left, int right)
+{
+    if (left < right)
+    {
+        int mid = (left + right) / 2;
+        merge_sort(arr, left, mid);
+        merge_sort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+}
 int main(void)
 {
     int n;
-    int first=0;
-    int pop=0;
-    int size=0;
-    char s[10];
-    int sum[100000];
+    int japoo[100001][2];
     scanf("%d", &n);
-    for (int i=0;i<n;i++)
+    for (int i = 0; i < n; i++)
     {
-        scanf("%s",s);
-        if (strcmp(s,"push")==0)
-        {
-            int a;
-            scanf("%d",&a);
-            sum[first++]=a;
-            size++;
-        }
-        else if (strcmp(s,"pop")==0)
-        {
-            if (size==0)
-            {
-                printf("-1\n");
-            }
-            else
-            {
-                printf("%d\n",sum[pop++]);
-                size--;
-            }
-        }
-        else if (strcmp(s,"size")==0)
-        {
-            printf("%d\n",size);
-        }
-        else if (strcmp(s,"empty")==0)
-        {
-            if (size==0)
-            {
-                printf("1\n");
-            }
-            else
-            {
-                printf("0\n");
-            }
-        }
-        else if (strcmp(s,"front")==0)
-        {
-            if (size==0)
-            {
-                printf("-1\n");
-            }
-            else
-            {
-                printf("%d\n",sum[pop]);
-            }
-        }
-        else if (strcmp(s,"back")==0)
-        {
-            if (size==0)
-            {
-                printf("-1\n");
-            }
-            else
-            {
-                printf("%d\n",sum[first - 1]);
-            }
-        }
+        scanf("%d %d", &japoo[i][0], &japoo[i][1]);
     }
+    merge_sort(japoo, 0, n - 1);
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d %d\n", japoo[i][0], japoo[i][1]);
+    }
+    return 0;
 }
