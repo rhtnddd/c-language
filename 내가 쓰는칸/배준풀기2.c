@@ -139,96 +139,149 @@
 //     }
 // }
 // 1920문제
+// #include <stdio.h>
+// int M[100001];
+// int temp[100001];
+// void merge(int *M, int start, int middle, int end){
+//     int i=start;
+//     int j=middle + 1;
+//     int k=start;
+//     while(i<=middle && j<=end)
+//     {
+//         if(M[i]<=M[j])
+//         {
+//             temp[k]=M[i++];
+//         }
+//         else
+//         {
+//             temp[k]=M[j++];
+//         }
+//         k++;
+//     }
+//     if(i>middle)
+//     {
+//         for(int t=j;t<=end;++t)
+//         {
+//             temp[k]=M[t];
+//             ++k;
+//         }
+//     }
+//     else
+//     {
+//         for(int t=i;t<=middle;++t)
+//         {
+//             temp[k]=M[t];
+//             ++k;
+//         }
+//     }
+//     for(int t=start;t<=end;++t)
+//     {
+//         M[t] = temp[t];
+//     }
+// }
+
+// void mergeSort(int *M, int start, int end)
+// {
+//     if(start<end)
+//     {
+//         int middle=(start+end)/2;
+//         mergeSort(M,start,middle);
+//         mergeSort(M,middle+1,end);
+//         merge(M,start,middle,end);
+//     }
+// }
+
+// int binary_search(int M[], int count,int answer)
+// {
+//     int str = 0;
+//     int end = count-1;
+//     while(str<=end)
+//     {
+//         int mid=(str+end)/2;
+//         if(M[mid]==answer)
+//         {
+//             return 1;
+//         }
+//         else if(M[mid]>answer)
+//         {
+//             end=mid-1;
+//         }
+//         else
+//         {
+//             str=mid+1;
+//         }
+//     }
+//     return 0;
+// }
+
+// int main(void)
+// {
+//     int n;
+//     int n1;
+//     int ebuntamsec;
+//     scanf("%d",&n);
+//     for(int i=0;i<n;i++)
+//     {
+//         scanf("%d",&M[i]);
+//     }
+//     mergeSort(M,0,n-1);
+//     scanf("%d",&n1);
+//     for(int i=0;i<n1;i++)
+//     {
+//         scanf("%d",&ebuntamsec);
+//         printf("%d\n",binary_search(M,n,ebuntamsec));
+//     }
+// }
+// 10814문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n;
+//     int nie[100001];
+//     char s[100001][100];
+//     scanf("%d",&n);
+//     for(int i=0;i<n;i++)
+//     {
+//         scanf("%d %s",&nie[i],&s[i]);
+//     }
+// }
+// 11047문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int coin[11];
+//     int n;
+//     int money;
+//     int sum=0;
+//     scanf("%d %d",&n,&money);
+//     for(int i=n-1;i>=0;i--)
+//     {
+//         scanf("%d",&coin[i]);
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         sum+=money/coin[i];
+//         money%=coin[i];
+//     }
+//     printf("%d",sum);
+// }
+// 2839문제
 #include <stdio.h>
-int M[100001];
-int temp[100001];
-void merge(int *M, int start, int middle, int end){
-    int i=start;
-    int j=middle + 1;
-    int k=start;
-    while(i<=middle && j<=end)
-    {
-        if(M[i]<=M[j])
-        {
-            temp[k]=M[i++];
-        }
-        else
-        {
-            temp[k]=M[j++];
-        }
-        k++;
-    }
-    if(i>middle)
-    {
-        for(int t=j;t<=end;++t)
-        {
-            temp[k]=M[t];
-            ++k;
-        }
-    }
-    else
-    {
-        for(int t=i;t<=middle;++t)
-        {
-            temp[k]=M[t];
-            ++k;
-        }
-    }
-    for(int t=start;t<=end;++t)
-    {
-        M[t] = temp[t];
-    }
-}
-
-void mergeSort(int *M, int start, int end)
-{
-    if(start<end)
-    {
-        int middle=(start+end)/2;
-        mergeSort(M,start,middle);
-        mergeSort(M,middle+1,end);
-        merge(M,start,middle,end);
-    }
-}
-
-int binary_search(int M[], int count,int answer)
-{
-    int str = 0;
-    int end = count-1;
-    while(str<=end)
-    {
-        int mid=(str+end)/2;
-        if(M[mid]==answer)
-        {
-            return 1;
-        }
-        else if(M[mid]>answer)
-        {
-            end=mid-1;
-        }
-        else
-        {
-            str=mid+1;
-        }
-    }
-    return 0;
-}
-
-int main(void)
-{
+int main(void) {
     int n;
-    int n1;
-    int ebuntamsec;
     scanf("%d",&n);
-    for(int i=0;i<n;i++)
+    int count=0;
+    while(n>=0)
     {
-        scanf("%d",&M[i]);
+        if(n%5==0)
+        {
+            count+=n/5;
+            printf("%d",count);
+            return 0;
+        }
+        n-=3;
+        count++;
     }
-    mergeSort(M,0,n-1);
-    scanf("%d",&n1);
-    for(int i=0;i<n1;i++)
-    {
-        scanf("%d",&ebuntamsec);
-        printf("%d\n",binary_search(M,n,ebuntamsec));
-    }
+    printf("-1");
+    return 0;
 }
