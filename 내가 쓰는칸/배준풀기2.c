@@ -232,18 +232,49 @@
 //         printf("%d\n",binary_search(M,n,ebuntamsec));
 //     }
 // }
-// 10814문제
+// 1181문제
 // #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// int compare_words(const void *a, const void *b) {
+//     char *wordA = *(char **)a;
+//     char *wordB = *(char **)b;
+//     if(strlen(wordA) != strlen(wordB))
+//     {
+//         return strlen(wordA) - strlen(wordB);
+//     }
+//     else
+//     {
+//         return strcmp(wordA, wordB);
+//     }
+// }
 // int main(void)
 // {
-//     int n;
-//     int nie[100001];
-//     char s[100001][100];
-//     scanf("%d",&n);
-//     for(int i=0;i<n;i++)
+//     int N;
+//     scanf("%d", &N);
+//     char words[N][51];
+//     for(int i = 0; i < N; i++)
 //     {
-//         scanf("%d %s",&nie[i],&s[i]);
+//         scanf("%s", words[i]);
 //     }
+//     char *unique_words[N];
+//     for(int i = 0; i < N; i++)
+//     {
+//         unique_words[i] = words[i];
+//     }
+//     qsort(unique_words, N, sizeof(char *), compare_words);
+//     if(N > 0)
+//     {
+//         printf("%s\n", unique_words[0]);
+//         for(int i = 1; i < N; i++)
+//         {
+//             if (strcmp(unique_words[i - 1], unique_words[i]) != 0)
+//             {
+//                 printf("%s\n", unique_words[i]);
+//             }
+//         }
+//     }
+//     return 0;
 // }
 // 11047문제
 // #include <stdio.h>
@@ -266,22 +297,83 @@
 //     printf("%d",sum);
 // }
 // 2839문제
+// #include <stdio.h>
+// int main(void) {
+//     int n;
+//     scanf("%d",&n);
+//     int count=0;
+//     while(n>=0)
+//     {
+//         if(n%5==0)
+//         {
+//             count+=n/5;
+//             printf("%d",count);
+//             return 0;
+//         }
+//         n-=3;
+//         count++;
+//     }
+//     printf("-1");
+//     return 0;
+// }
+// 1436문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n;
+//     scanf("%d",&n);
+//     int count=0;
+//     int number=665;
+//     while(count<n)
+//     {
+//         number++;
+//         int temp=number;
+//         int has666=0;
+//         while(temp > 0)
+//         {
+//             if(temp % 1000 == 666)
+//             {
+//                 has666=1;
+//                 break;
+//             }
+//             temp/=10;
+//         }
+//         if (has666)
+//         {
+//             count++;
+//         }
+//     }
+//     printf("%d\n",number);
+//     return 0;
+// }
+// 1929문제
 #include <stdio.h>
+#include <stdbool.h>
 int main(void) {
-    int n;
-    scanf("%d",&n);
-    int count=0;
-    while(n>=0)
+    int m,n;
+    scanf("%d %d",&m,&n);
+    bool prime[n+1];
+    for(int i=0;i<=n;i++)
     {
-        if(n%5==0)
-        {
-            count+=n/5;
-            printf("%d",count);
-            return 0;
-        }
-        n-=3;
-        count++;
+        prime[i] = true;
     }
-    printf("-1");
+    prime[0]=false;
+    prime[1]=false;
+    for(int i=2;i*i<=n;i++)
+    {
+        if(prime[i]){
+            for(int j=i*i;j<=n;j+=i)
+            {
+                prime[j] = false;
+            }
+        }
+    }
+    for(int i=m;i<=n;i++)
+    {
+        if(prime[i])
+        {
+            printf("%d\n",i);
+        }
+    }
     return 0;
 }
