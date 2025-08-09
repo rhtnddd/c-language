@@ -27,39 +27,63 @@
 //     return 0;
 // }
 // 1913문제
+// #include <stdio.h>
+// int n[1000][1000]={0};
+// int main(void)
+// {
+//     int a,b;
+//     int japox;
+//     int japoy;
+//     scanf("%d %d",&a,&b);
+//     int nx=0,ny=0,d=0;
+//     int x[4]={1,0,-1,0},y[4]={0,1,0,-1};
+//     for(int i=a*a;i>=1;i--)
+//     {
+//         n[nx][ny]=i;
+//         if(nx+x[d%4]>=a||ny+y[d%4]>=a||nx+x[d%4]<0||ny+y[d%4]<0||n[nx+x[d%4]][ny+y[d%4]]!=0)
+//         {
+//             d++;
+//         }
+//         nx+=x[d%4];
+//         ny+=y[d%4];
+//     }
+//     for(int i=0;i<a;i++)
+//     {
+//         for(int j=0;j<a;j++)
+//         {
+//             printf("%d ",n[i][j]);
+//             if(b==n[i][j])
+//             {
+//                 japox=i+1;
+//                 japoy=j+1;
+//             }
+//         }
+        
+//         printf("\n");
+//     }
+//     printf("%d %d",japox,japoy);
+// }
+// 14916문제
 #include <stdio.h>
-int n[1000][1000]={0};
 int main(void)
 {
-    int a,b;
-    int japox;
-    int japoy;
-    scanf("%d %d",&a,&b);
-    int nx=0,ny=0,d=0;
-    int x[4]={1,0,-1,0},y[4]={0,1,0,-1};
-    for(int i=a*a;i>=1;i--)
+    int n;
+    int sum=0;
+    scanf("%d",&n);
+    for(;;)
     {
-        n[nx][ny]=i;
-        if(nx+x[d%4]>=a||ny+y[d%4]>=a||nx+x[d%4]<0||ny+y[d%4]<0||n[nx+x[d%4]][ny+y[d%4]]!=0)
+        if(n%5==0)
         {
-            d++;
+            sum+=n/5;
+            break;
         }
-        nx+=x[d%4];
-        ny+=y[d%4];
-    }
-    for(int i=0;i<a;i++)
-    {
-        for(int j=0;j<a;j++)
+        if(n<0)
         {
-            printf("%d ",n[i][j]);
-            if(b==n[i][j])
-            {
-                japox=i+1;
-                japoy=j+1;
-            }
+            printf("-1");
+            return 0;
         }
-        
-        printf("\n");
+        sum+=1;
+        n-=2;
     }
-    printf("%d %d",japox,japoy);
+    printf("%d",sum);
 }
