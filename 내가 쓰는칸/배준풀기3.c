@@ -64,26 +64,39 @@
 //     printf("%d %d",japox,japoy);
 // }
 // 14916문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n;
+//     int sum=0;
+//     scanf("%d",&n);
+//     for(;;)
+//     {
+//         if(n%5==0)
+//         {
+//             sum+=n/5;
+//             break;
+//         }
+//         if(n<0)
+//         {
+//             printf("-1");
+//             return 0;
+//         }
+//         sum+=1;
+//         n-=2;
+//     }
+//     printf("%d",sum);
+// }
+// 11726문제
 #include <stdio.h>
 int main(void)
 {
+    long long int sum[1001]={1,1,};
     int n;
-    int sum=0;
     scanf("%d",&n);
-    for(;;)
+    for(int i=2;i<=n;i++)
     {
-        if(n%5==0)
-        {
-            sum+=n/5;
-            break;
-        }
-        if(n<0)
-        {
-            printf("-1");
-            return 0;
-        }
-        sum+=1;
-        n-=2;
+        sum[i]=(sum[i-1]+sum[i-2])%10007;
     }
-    printf("%d",sum);
+    printf("%lld",sum[n]);
 }
