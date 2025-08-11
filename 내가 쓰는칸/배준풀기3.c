@@ -1,3 +1,4 @@
+// 풀어야함
 // #include <stdio.h>
 // #include <string.h>
 // int main(void)
@@ -88,15 +89,44 @@
 //     printf("%d",sum);
 // }
 // 11726문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     long long int sum[1001]={1,1,};
+//     int n;
+//     scanf("%d",&n);
+//     for(int i=2;i<=n;i++)
+//     {
+//         sum[i]=(sum[i-1]+sum[i-2])%10007;
+//     }
+//     printf("%lld",sum[n]);
+// }
+// 5347문제
 #include <stdio.h>
+long long int gcd(long long int a,long long int b)
+{
+    while(b!=0)
+    {
+        long long int temp=a%b;
+        a=b;
+        b=temp;
+    }
+    return a;
+}
+long long int lcm(long long int a,long long int b)
+{
+    return (a/gcd(a,b))*b;
+}
 int main(void)
 {
-    long long int sum[1001]={1,1,};
     int n;
-    scanf("%d",&n);
-    for(int i=2;i<=n;i++)
+    scanf("%d", &n);
+
+    for(int i=0;i<n;i++)
     {
-        sum[i]=(sum[i-1]+sum[i-2])%10007;
+        long long int a, b;
+        scanf("%lld %lld",&a,&b);
+        printf("%lld\n",lcm(a,b));
     }
-    printf("%lld",sum[n]);
+    return 0;
 }
