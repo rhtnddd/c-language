@@ -102,31 +102,80 @@
 //     printf("%lld",sum[n]);
 // }
 // 5347문제
+// #include <stdio.h>
+// long long int gcd(long long int a,long long int b)
+// {
+//     while(b!=0)
+//     {
+//         long long int temp=a%b;
+//         a=b;
+//         b=temp;
+//     }
+//     return a;
+// }
+// long long int lcm(long long int a,long long int b)
+// {
+//     return (a/gcd(a,b))*b;
+// }
+// int main(void)
+// {
+//     int n;
+//     scanf("%d", &n);
+
+//     for(int i=0;i<n;i++)
+//     {
+//         long long int a, b;
+//         scanf("%lld %lld",&a,&b);
+//         printf("%lld\n",lcm(a,b));
+//     }
+//     return 0;
+// }
+// 9012문제
 #include <stdio.h>
-long long int gcd(long long int a,long long int b)
+#include <string.h>
+void VPS()
 {
-    while(b!=0)
+    char PS[51];
+    scanf("%s",PS);
+    char stack[51];
+    int top=-1;
+    int len=strlen(PS);
+    for(int j=0;j<len;j++)
     {
-        long long int temp=a%b;
-        a=b;
-        b=temp;
+        if(PS[j]=='(')
+        {
+            stack[++top]='(';
+        }
+        else if(PS[j]==')')
+        {
+            if(top==-1)
+            {
+                printf("NO\n");
+                while (j<len-1)
+                {
+                    j++;
+                }
+                return;
+            }
+            top--;
+        }
     }
-    return a;
-}
-long long int lcm(long long int a,long long int b)
-{
-    return (a/gcd(a,b))*b;
+    if(top==-1)
+    {
+        printf("YES\n");
+    }
+    else
+    {
+        printf("NO\n");
+    }
 }
 int main(void)
 {
     int n;
     scanf("%d", &n);
-
     for(int i=0;i<n;i++)
     {
-        long long int a, b;
-        scanf("%lld %lld",&a,&b);
-        printf("%lld\n",lcm(a,b));
+        VPS();
     }
     return 0;
 }
