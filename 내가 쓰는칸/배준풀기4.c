@@ -1,15 +1,29 @@
 // 15996문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     long long int n,a;
+//     scanf("%lld %lld",&n,&a);  
+//     long long int count=0;
+//     while(n>0)
+//     {
+//         n/=a;
+//         count+=n;
+//     }
+//     printf("%lld\n",count);   
+//     return 0;
+// }
+// 11727문제
 #include <stdio.h>
 int main(void)
 {
-    long long int n,a;
-    scanf("%lld %lld",&n,&a);  
-    long long int count=0;
-    while(n>0)
+    int a[1001]={1,1,};
+    int n;
+    scanf("%d",&n);
+    for(int i=2;i<=n;i++)
     {
-        n/=a;
-        count+=n;
+        a[i]=(a[i-1]+2*a[i-2])%10007;
     }
-    printf("%lld\n",count);   
+    printf("%d\n",a[n]);
     return 0;
 }
