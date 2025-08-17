@@ -76,57 +76,69 @@
 //     return 0;
 // }
 // 1463문제
-// #include <stdio.h>
-// int main(void)
-// {
-//     int n;
-//     scanf("%d",&n);
-//     for(int i=0;i<n;i++)
-//     {
-        
-//     }
-// }
-// 2805문제
 #include <stdio.h>
-int main()
+int a[1000001];
+int main(void)
 {
     int n;
-    long long int m;
-    scanf("%d %lld",&n,&m);
-    long long int trees[n];
-    long long int max_h=0;
-    for (int i=0;i<n;i++)
+    scanf("%d",&n);
+    a[1]=0;
+    for(int i=2;i<=n;i++)
     {
-        scanf("%lld",&trees[i]);
-        if (trees[i]>max_h)
+        a[i]=a[i-1]+1;
+        if (i%2==0&&a[i]>a[i/2]+1)
         {
-            max_h=trees[i];
+            a[i]=a[i/2]+1;
+        }
+        if(i%3==0&&a[i]>a[i/3]+1)
+        {
+            a[i]=a[i/3]+1;
         }
     }
-    long long int low=0;
-    long long int high=max_h;
-    long long int result=0;
-    while(low<=high)
-    {
-        long long int mid=low+(high-low)/2;
-        long long int wood=0;
-        for(int i=0;i<n;i++)
-        {
-            if(trees[i]>mid)
-            {
-                wood+=trees[i]-mid;
-            }
-        }
-        if(wood>=m)
-        {
-            result=mid;
-            low=mid+1;
-        }
-        else
-        {
-            high=mid-1;
-        }
-    }
-    printf("%lld\n",result);
+    printf("%d\n",a[n]);
     return 0;
 }
+// 2805문제
+// #include <stdio.h>
+// int main()
+// {
+//     int n;
+//     long long int m;
+//     scanf("%d %lld",&n,&m);
+//     long long int trees[n];
+//     long long int max_h=0;
+//     for (int i=0;i<n;i++)
+//     {
+//         scanf("%lld",&trees[i]);
+//         if (trees[i]>max_h)
+//         {
+//             max_h=trees[i];
+//         }
+//     }
+//     long long int low=0;
+//     long long int high=max_h;
+//     long long int result=0;
+//     while(low<=high)
+//     {
+//         long long int mid=low+(high-low)/2;
+//         long long int wood=0;
+//         for(int i=0;i<n;i++)
+//         {
+//             if(trees[i]>mid)
+//             {
+//                 wood+=trees[i]-mid;
+//             }
+//         }
+//         if(wood>=m)
+//         {
+//             result=mid;
+//             low=mid+1;
+//         }
+//         else
+//         {
+//             high=mid-1;
+//         }
+//     }
+//     printf("%lld\n",result);
+//     return 0;
+// }
