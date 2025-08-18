@@ -76,28 +76,28 @@
 //     return 0;
 // }
 // 1463문제
-#include <stdio.h>
-int a[1000001];
-int main(void)
-{
-    int n;
-    scanf("%d",&n);
-    a[1]=0;
-    for(int i=2;i<=n;i++)
-    {
-        a[i]=a[i-1]+1;
-        if (i%2==0&&a[i]>a[i/2]+1)
-        {
-            a[i]=a[i/2]+1;
-        }
-        if(i%3==0&&a[i]>a[i/3]+1)
-        {
-            a[i]=a[i/3]+1;
-        }
-    }
-    printf("%d\n",a[n]);
-    return 0;
-}
+// #include <stdio.h>
+// int a[1000001];
+// int main(void)
+// {
+//     int n;
+//     scanf("%d",&n);
+//     a[1]=0;
+//     for(int i=2;i<=n;i++)
+//     {
+//         a[i]=a[i-1]+1;
+//         if (i%2==0&&a[i]>a[i/2]+1)
+//         {
+//             a[i]=a[i/2]+1;
+//         }
+//         if(i%3==0&&a[i]>a[i/3]+1)
+//         {
+//             a[i]=a[i/3]+1;
+//         }
+//     }
+//     printf("%d\n",a[n]);
+//     return 0;
+// }
 // 2805문제
 // #include <stdio.h>
 // int main()
@@ -142,3 +142,22 @@ int main(void)
 //     printf("%lld\n",result);
 //     return 0;
 // }
+// 13241문제
+#include <stdio.h>
+int main(void)
+{
+    int a,b;
+    long long int GCD=0;
+    long long int LCM=0;
+    scanf("%d %d",&a,&b);
+    for(int i=1;i<=a;i++)
+    {
+        if(a%i==0&&b%i==0)
+        {
+            GCD=i;
+        }
+    }
+    LCM=GCD*(a/GCD)*(b/GCD);
+    printf("%lld",LCM);
+    return 0;
+}
