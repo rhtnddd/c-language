@@ -162,69 +162,127 @@
 //     return 0;
 // }
 // 11931문제
+// #include <stdio.h>
+// int a[1000001];
+// int temp[1000001];
+// void merge(int *a, int start, int middle, int end){
+//     int i=start;
+//     int j=middle+1;
+//     int k=start;
+//     while(i<=middle&&j<=end)
+//     {
+//         if(a[i]>=a[j])
+//         {
+//             temp[k]=a[i++];
+//         }
+//         else
+//         {
+//             temp[k]=a[j++];
+//         }
+//         k++;
+//     }
+//     if(i>middle)
+//     {
+//         for(int t=j;t<=end;++t)
+//         {
+//             temp[k]=a[t];
+//             ++k;
+//         }
+//     }
+//     else
+//     {
+//         for(int t=i;t<=middle;++t)
+//         {
+//             temp[k]=a[t];
+//             ++k;
+//         }
+//     }
+//     for(int t=start;t<=end;++t)
+//     {
+//         a[t] = temp[t];
+//     }
+// }
+
+// void mergeSort(int *a, int start, int end)
+// {
+//     if(start<end)
+//     {
+//         int middle=(start+end)/2;
+//         mergeSort(a,start,middle);
+//         mergeSort(a,middle+1,end);
+//         merge(a,start,middle,end);
+//     }
+// }
+
+// int main(void)
+// {
+//     int n;
+//     scanf("%d",&n);
+//     for(int i=0;i<n;i++)
+//     {
+//         scanf("%d",&a[i]);
+//     }
+//     mergeSort(a,0,n-1);
+//     for(int i=0;i<n;i++)
+//     {
+//         printf("%d\n",a[i]);
+//     }
+// }
+// 25206문재
 #include <stdio.h>
-int a[1000001];
-int temp[1000001];
-void merge(int *a, int start, int middle, int end){
-    int i=start;
-    int j=middle+1;
-    int k=start;
-    while(i<=middle&&j<=end)
-    {
-        if(a[i]>=a[j])
-        {
-            temp[k]=a[i++];
-        }
-        else
-        {
-            temp[k]=a[j++];
-        }
-        k++;
-    }
-    if(i>middle)
-    {
-        for(int t=j;t<=end;++t)
-        {
-            temp[k]=a[t];
-            ++k;
-        }
-    }
-    else
-    {
-        for(int t=i;t<=middle;++t)
-        {
-            temp[k]=a[t];
-            ++k;
-        }
-    }
-    for(int t=start;t<=end;++t)
-    {
-        a[t] = temp[t];
-    }
-}
-
-void mergeSort(int *a, int start, int end)
-{
-    if(start<end)
-    {
-        int middle=(start+end)/2;
-        mergeSort(a,start,middle);
-        mergeSort(a,middle+1,end);
-        merge(a,start,middle,end);
-    }
-}
-
+#include <string.h>
 int main(void)
 {
-    int n;
-    scanf("%d",&n);
-    for(int i=0;i<n;i++)
+    double a,sum=0,num=0;
+    char noth[100],english[3];
+    for(int i=0;i<20;i++)
     {
-        scanf("%d",&a[i]);
+        scanf("%s %lf %s",noth,&a,english);
+        if(strcmp(english,"A+")==0)
+        {
+            sum+=a*4.5;
+            num+=a;
+        }
+        else if(strcmp(english,"A0")==0)
+        {
+            sum+=a*4;
+            num+=a;
+        }
+        else if(strcmp(english,"B+")==0)
+        {
+            sum+=a*3.5;
+            num+=a;
+        }
+        else if(strcmp(english,"B0")==0)
+        {
+            sum+=a*3;
+            num+=a;
+        }
+        else if(strcmp(english,"C+")==0)
+        {
+            sum+=a*2.5;
+            num+=a;
+        }
+        else if(strcmp(english,"C0")==0)
+        {
+            sum+=a*2;
+            num+=a;
+        }
+        else if(strcmp(english,"D+")==0)
+        {
+            sum+=a*1.5;
+            num+=a;
+        }
+        else if(strcmp(english,"D0")==0)
+        {
+            sum+=a*1;
+            num+=a;
+        }
+        else if(strcmp(english,"F")==0)
+        {
+            sum+=a*0;
+            num+=a;
+        }
     }
-    mergeSort(a,0,n-1);
-    for(int i=0;i<n;i++)
-    {
-        printf("%d\n",a[i]);
-    }
+    printf("%.6lf",sum/num);
 }
