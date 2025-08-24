@@ -37,46 +37,63 @@
 // }
 
 // 1026문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n;
+//     int temp=0;
+//     int temp1=0;
+//     int sum=0;
+//     int a[100];
+//     int b[100];
+//     scanf("%d",&n);
+//     for(int i=0;i<n;i++)
+//     {
+//         scanf("%d",&a[i]);
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         scanf("%d",&b[i]);
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         for(int j=0;j<n;j++)
+//         {
+//             if(a[i]>a[j])
+//             {
+//                 temp=a[i];
+//                 a[i]=a[j];
+//                 a[j]=temp;
+//             }
+//             if(b[i]<b[j])
+//             {
+//                 temp1=b[i];
+//                 b[i]=b[j];
+//                 b[j]=temp1;
+//             }
+//         }
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         sum+=a[i]*b[i];
+//     }
+//     printf("%d\n",sum);
+//     return 0;
+// }
+
+// 9655문제
 #include <stdio.h>
 int main(void)
 {
     int n;
-    int temp=0;
-    int temp1=0;
-    int sum=0;
-    int a[100];
-    int b[100];
     scanf("%d",&n);
-    for(int i=0;i<n;i++)
+    if(n%2==1)
     {
-        scanf("%d",&a[i]);
+        printf("SK\n");
     }
-    for(int i=0;i<n;i++)
+    else
     {
-        scanf("%d",&b[i]);
+        printf("CY\n");
     }
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            if(a[i]>a[j])
-            {
-                temp=a[i];
-                a[i]=a[j];
-                a[j]=temp;
-            }
-            if(b[i]<b[j])
-            {
-                temp1=b[i];
-                b[i]=b[j];
-                b[j]=temp1;
-            }
-        }
-    }
-    for(int i=0;i<n;i++)
-    {
-        sum+=a[i]*b[i];
-    }
-    printf("%d\n",sum);
     return 0;
 }
