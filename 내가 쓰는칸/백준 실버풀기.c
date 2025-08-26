@@ -116,31 +116,65 @@
 // }
 
 // 9657문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int a[2000]={1,0,1,1,};
+//     int m[3]={1,3,4};
+//     int n;
+//     scanf("%d",&n);
+//     for(int i=4;i<n;i++)
+//     {
+//         for(int j=0;j<3;j++)
+//         {
+//             if(a[i-m[j]]==0)
+//             {
+//                 a[i]=1;
+//             }
+//         }
+//     }
+//     if(a[n-1]==0)
+//     {
+//         printf("CY\n");
+//         return 0;
+//     }
+//     else
+//     {
+//         printf("SK\n");
+//         return 0;
+//     }
+// }
+
+// 9658문제
 #include <stdio.h>
 int main(void)
 {
-    int a[2000]={1,0,1,1,};
+    int a[2000]={1,0,1,0};
     int m[3]={1,3,4};
     int n;
     scanf("%d",&n);
     for(int i=4;i<n;i++)
     {
+        a[i]=1;
+    }
+    for(int i=4;i<n;i++)
+    {
         for(int j=0;j<3;j++)
         {
-            if(a[i-m[j]]==0)
+            if(a[i-m[j]]==1)
             {
-                a[i]=1;
+                a[i]=0;
             }
         }
     }
     if(a[n-1]==0)
     {
-        printf("CY\n");
+        printf("SK\n");
         return 0;
     }
     else
     {
-        printf("SK\n");
+        printf("CY\n");
         return 0;
     }
 }
