@@ -126,12 +126,93 @@
 //     return 0;
 // }
 // 9660문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     long long int n;
+//     scanf("%lld",&n);
+//     if(n%7==0||n%7==2)
+//     {
+//         printf("CY");
+//         return 0;
+//     }
+//     printf("SK");
+// }
+// 1914문재
+// #include <stdio.h>
+// void f(int a,int b,int c,int d)
+// {
+//     if(a<=1)
+//     {
+//         printf("%d %d\n",b,c);
+//         return;
+//     }
+//     f(a-1,b,d,c);
+//     printf("%d %d\n",b,c);
+//     f(a-1,d,c,b);
+// }
+// int main(void)
+// {
+//     int n;
+//     __int128_t sum=1;
+//     char a[129];
+//     int i=0;
+//     scanf("%d",&n);
+//     for(int j=0;j<n;j++)
+//     {
+//         sum*=2;
+//     }
+//     sum--;
+//     while(sum>0)
+//     {
+//         a[i++]=(sum%10)+'0';
+//         sum/=10;
+//     }
+//     a[i]='\0';
+//     for(int j=i-1;j>=0;j--)
+//     {
+//         printf("%c",a[j]);
+//     }
+//     printf("\n");
+//     if(n<=20)
+//     {
+//         f(n,1,3,2);
+//     }
+// }
+// 11729문제
+// #include <stdio.h>
+// void f(int a,int b,int c,int d)
+// {
+//     if(a<=1)
+//     {
+//         printf("%d %d\n",b,c);
+//         return;
+//     }
+//     f(a-1,b,d,c);
+//     printf("%d %d\n",b,c);
+//     f(a-1,d,c,b);
+// }
+// int main(void)
+// {
+//     int n;
+//     long long int sum=1;
+//     int i=0;
+//     scanf("%d",&n);
+//     for(int j=0;j<n;j++)
+//     {
+//         sum*=2;
+//     }
+//     sum--;
+//     printf("%lld\n",sum);
+//     f(n,1,3,2);
+// }
+// 9661문제
 #include <stdio.h>
 int main(void)
 {
     long long int n;
     scanf("%lld",&n);
-    if(n%7==0||n%7==2)
+    if(n%5==0||n%5==2)
     {
         printf("CY");
         return 0;
