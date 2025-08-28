@@ -125,11 +125,16 @@
 //     }
 //     return 0;
 // }
-// 9661문제
+// 9660문제
 #include <stdio.h>
 int main(void)
 {
     long long int n;
     scanf("%lld",&n);
-    
+    if(n%7==0||n%7==2)
+    {
+        printf("CY");
+        return 0;
+    }
+    printf("SK");
 }
