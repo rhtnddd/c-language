@@ -180,18 +180,38 @@
 // }
 
 // 9659문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     long long int n;
+//     scanf("%lld",&n);
+//     if(n%2!=0)
+//     {
+//         printf("SK\n");
+//     }
+//     else
+//     {
+//         printf("CY\n");
+//     }
+//     return 0;
+// }
+
+// 1850문제
 #include <stdio.h>
 int main(void)
 {
-    long long int n;
-    scanf("%lld",&n);
-    if(n%2!=0)
+    long long int n,m;
+    scanf("%lld %lld",&n,&m);
+    long long int temp;
+    while(m!=0)
     {
-        printf("SK\n");
+        temp=n%m;
+        n=m;
+        m=temp;
     }
-    else
+    for(int i=0;i<n;i++)
     {
-        printf("CY\n");
+        printf("1");    
     }
     return 0;
 }
