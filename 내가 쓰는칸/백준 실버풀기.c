@@ -217,75 +217,97 @@
 // }
 
 // 2108문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n;
+//     scanf("%d",&n);
+//     int count[8001]={0};
+//     int sum=0;
+//     int min=4001,max=-4001;
+//     for (int i=0;i<n;i++)
+//     {
+//         int x;
+//         scanf("%d",&x);
+//         sum+=x;
+//         count[x+4000]++;
+//         if(x<min)
+//         {
+//             min=x;
+//         }
+//         if(x>max)
+//         {
+//             max=x;
+//         }
+//     }
+//     int q = sum / n;
+//     int r = sum % n;
+//     if(r*2>=n)
+//     {
+//         q++;
+//     }
+//     if(r * 2 <= -n)
+//     {
+//         q--;
+//     }
+//     printf("%d\n", q);
+//     int midCount=0;
+//     int median=0;
+//     for(int i=0;i<=8000;i++)
+//     {
+//         midCount+=count[i];
+//         if(midCount>=n/2+1)
+//         {
+//             median=i-4000;
+//             break;
+//         }
+//     }
+//     printf("%d\n",median);
+//     int mode=0;
+//     int maxFreq=0;
+//     for (int i=0;i<=8000;i++)
+//     {
+//         if(count[i]>maxFreq)
+//         {
+//             maxFreq = count[i];
+//         }
+//     }
+//     int modeCount=0;
+//     for (int i=0;i<=8000;i++)
+//     {
+//         if (count[i]==maxFreq)
+//         {
+//             mode=i-4000;
+//             modeCount++;
+//             if (modeCount==2)
+//             {
+//                 break;
+//             }
+//         }
+//     }
+//     printf("%d\n",mode);
+//     printf("%d\n",max-min);
+//     return 0;
+// }
+
+// 1789문제
 #include <stdio.h>
 int main(void)
 {
-    int n;
-    scanf("%d",&n);
-    int count[8001]={0};
-    int sum=0;
-    int min=4001,max=-4001;
-    for (int i=0;i<n;i++)
+    long long int n;
+    int num=0;
+    scanf("%lld",&n);
+    for(long long int i=1;i<=n;i++)
     {
-        int x;
-        scanf("%d",&x);
-        sum+=x;
-        count[x+4000]++;
-        if(x<min)
+        if(((i*(i+1))/2)<=n)
         {
-            min=x;
+            num=i;
         }
-        if(x>max)
+        else
         {
-            max=x;
-        }
-    }
-    int q = sum / n;
-    int r = sum % n;
-    if(r*2>=n)
-    {
-        q++;
-    }
-    if(r * 2 <= -n)
-    {
-        q--;
-    }
-    printf("%d\n", q);
-    int midCount=0;
-    int median=0;
-    for(int i=0;i<=8000;i++)
-    {
-        midCount+=count[i];
-        if(midCount>=n/2+1)
-        {
-            median=i-4000;
             break;
         }
     }
-    printf("%d\n",median);
-    int mode=0;
-    int maxFreq=0;
-    for (int i=0;i<=8000;i++)
-    {
-        if(count[i]>maxFreq)
-        {
-            maxFreq = count[i];
-        }
-    }
-    int modeCount=0;
-    for (int i=0;i<=8000;i++)
-    {
-        if (count[i]==maxFreq)
-        {
-            mode=i-4000;
-            modeCount++;
-            if (modeCount==2)
-            {
-                break;
-            }
-        }
-    }
-    printf("%d\n",mode);
-    printf("%d\n",max-min);
+    printf("%d\n",num);
     return 0;
 }
