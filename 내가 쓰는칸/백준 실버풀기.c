@@ -291,23 +291,57 @@
 // }
 
 // 1789문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     long long int n;
+//     int num=0;
+//     scanf("%lld",&n);
+//     for(long long int i=1;i<=n;i++)
+//     {
+//         if(((i*(i+1))/2)<=n)
+//         {
+//             num=i;
+//         }
+//         else
+//         {
+//             break;
+//         }
+//     }
+//     printf("%d\n",num);
+//     return 0;
+// }
+
+// 11055문제
 #include <stdio.h>
 int main(void)
 {
-    long long int n;
-    int num=0;
-    scanf("%lld",&n);
-    for(long long int i=1;i<=n;i++)
+    int n;
+    int a[1001]={0};
+    int m[1001]={0};
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
     {
-        if(((i*(i+1))/2)<=n)
+        scanf("%d",&a[i]);
+        m[i]=a[i];
+    }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<=n;j++)
         {
-            num=i;
-        }
-        else
-        {
-            break;
+            if(a[i]<a[j]&&m[j]<m[i]+a[j])
+            {
+                m[j]=m[i]+a[j];
+            }
         }
     }
-    printf("%d\n",num);
-    return 0;
+    int an=0;
+    for(int i=0;i<n;i++)
+    {
+        if(an<m[i])
+        {
+            an=m[i];
+        }
+    }
+    printf("%d",an);
 }
