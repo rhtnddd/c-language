@@ -313,35 +313,72 @@
 // }
 
 // 11055문제
-#include <stdio.h>
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n;
+//     int a[1001]={0};
+//     int m[1001]={0};
+//     scanf("%d",&n);
+//     for(int i=0;i<n;i++)
+//     {
+//         scanf("%d",&a[i]);
+//         m[i]=a[i];
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         for(int j=i+1;j<=n;j++)
+//         {
+//             if(a[i]<a[j]&&m[j]<m[i]+a[j])
+//             {
+//                 m[j]=m[i]+a[j];
+//             }
+//         }
+//     }
+//     int an=0;
+//     for(int i=0;i<n;i++)
+//     {
+//         if(an<m[i])
+//         {
+//             an=m[i];
+//         }
+//     }
+//     printf("%d",an);
+// }
+
+// 1158문제
+#include <iostream>
+#include <queue>
+using namespace std;
 int main(void)
-{
-    int n;
-    int a[1001]={0};
-    int m[1001]={0};
-    scanf("%d",&n);
-    for(int i=0;i<n;i++)
+{   
+    queue<int> q;
+    int n,m,j=0,a[10000];
+    cin >> n;
+    cin >> m;
+    cout << "<";
+    for(int i=1;i<=n;i++)
     {
-        scanf("%d",&a[i]);
-        m[i]=a[i];
+        q.push(i);
+    }
+    while(!q.empty())
+    {
+        for(int i=0;i<m-1;i++)
+        {
+            q.push(q.front());
+            q.pop();
+        }
+        a[j]=q.front();
+        q.pop();
+        j++;
     }
     for(int i=0;i<n;i++)
     {
-        for(int j=i+1;j<=n;j++)
+        cout << a[i];
+        if(i!=n-1)
         {
-            if(a[i]<a[j]&&m[j]<m[i]+a[j])
-            {
-                m[j]=m[i]+a[j];
-            }
+            cout << ", ";
         }
     }
-    int an=0;
-    for(int i=0;i<n;i++)
-    {
-        if(an<m[i])
-        {
-            an=m[i];
-        }
-    }
-    printf("%d",an);
+    cout << ">";
 }
