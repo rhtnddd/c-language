@@ -384,38 +384,66 @@
 // }
 
 // 11866문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n,m,j=0;
+//     int first=0;
+//     int end=0,size=0;
+//     int a[1000000];
+//     int am[1000000];
+//     scanf("%d %d",&n,&m);
+//     for(int i=1;i<=n;i++)
+//     {
+//         a[first++]=i;
+//         size++;
+//     }
+//     while(!(size==0))
+//     {
+//         for(int i=0;i<m-1;i++)
+//         {
+//             a[first++]=a[end++];
+//         }
+//         size--;
+//         am[j++]=a[end++];
+//     }
+//     printf("<");
+//     for(int i=0;i<n;i++)
+//     {
+//         printf("%d",am[i]);
+//         if(i!=n-1)
+//         {
+//             printf(", ");
+//         }
+//     }
+//     printf(">\n");
+//     return 0;
+// }
+
+// 2960문제
 #include <stdio.h>
 int main(void)
 {
-    int n,m,j=0;
-    int first=0;
-    int end=0,size=0;
-    int a[1000000];
-    int am[1000000];
+    int n,m,sum=0;
     scanf("%d %d",&n,&m);
-    for(int i=1;i<=n;i++)
+    int a[1001]={0};
+    for(int i=2;i<=n;i++)
     {
-        a[first++]=i;
-        size++;
-    }
-    while(!(size==0))
-    {
-        for(int i=0;i<m-1;i++)
+        if(!a[i])
         {
-            a[first++]=a[end++];
-        }
-        size--;
-        am[j++]=a[end++];
-    }
-    printf("<");
-    for(int i=0;i<n;i++)
-    {
-        printf("%d",am[i]);
-        if(i!=n-1)
-        {
-            printf(", ");
+            for(int j=i;j<=n;j+=i)
+            {
+                if(!a[j])
+                {
+                    a[j]=1;
+                    sum++;
+                    if (sum==m)
+                    {
+                        printf("%d\n",j);
+                        return 0;
+                    }
+                }
+            }
         }
     }
-    printf(">\n");
-    return 0;
 }
