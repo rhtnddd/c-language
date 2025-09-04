@@ -207,15 +207,43 @@
 //     f(n,1,3,2);
 // }
 // 9661문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     long long int n;
+//     scanf("%lld",&n);
+//     if(n%5==0||n%5==2)
+//     {
+//         printf("CY");
+//         return 0;
+//     }
+//     printf("SK");
+// }
+
+// 1016문제
 #include <stdio.h>
+#include <stdlib.h>
+int sum=0;
 int main(void)
 {
-    long long int n;
-    scanf("%lld",&n);
-    if(n%5==0||n%5==2)
+    long long int n,m;
+    int sum=0;
+    scanf("%lld %lld",&n,&m);
+     char *a=(char*)calloc(m-n+1,sizeof(char));
+    for(long long int i=2;i*i<=m;i++)
     {
-        printf("CY");
-        return 0;
+        for(long long int j=(n+(i*i)-1)/(i*i)*(i*i);j<=m;j+=(i*i))
+        {
+            a[j-n]=1;
+        }
     }
-    printf("SK");
+    for(int i=0;i<m-n+1;i++)
+    {
+        if(!a[i])
+        {
+            sum++;
+        }
+    }
+    printf("%d\n",sum);
+    return 0;
 }
