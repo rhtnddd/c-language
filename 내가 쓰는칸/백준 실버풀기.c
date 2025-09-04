@@ -449,35 +449,70 @@
 // }
 
 // 15965문제
+// #include <stdio.h>
+// int a[7400000]={0,};
+// int main(void)
+// {
+//     int sum=0;
+//     int num=0;
+//     int n;
+//     scanf("%d",&n);
+//     for(int i=2;i*i<=7400000;i++)
+//     {
+//         if(!a[i])
+//         {
+//             for(int j=i*i;j<=7400000;j+=i)
+//             {
+//                a[j]=1; 
+//             }
+//         }
+//     }
+//     for(int i=2;i<=7400000;i++)
+//     {
+//         if(!a[i]&&n!=num)
+//         {
+//             num++;
+//             sum=i;
+//             if(n==num)
+//             {
+//                 break;
+//             }
+//         }
+//     }
+//     printf("%d\n",sum);
+// }
+
+// 4948문제
 #include <stdio.h>
-int a[7400000]={0,};
+int a[3550000]={0,};
 int main(void)
 {
-    int sum=0;
-    int num=0;
-    int n;
-    scanf("%d",&n);
-    for(int i=2;i*i<=7400000;i++)
+    int n=1;
+    while(1)
     {
-        if(!a[i])
+        int sum=0;
+        scanf("%d",&n);
+        if(n==0)
         {
-            for(int j=i*i;j<=7400000;j+=i)
+            return 0;
+        }
+        for(int i=2;i*i<=n*2;i++)
+        {
+            if(!a[i])
             {
-               a[j]=1; 
+                for(int j=i*i;j<=n*2;j+=i)
+                {
+                   a[j]=1; 
+                }
             }
         }
-    }
-    for(int i=2;i<=7400000;i++)
-    {
-        if(!a[i]&&n!=num)
+        for(int i=n+1;i<=n*2;i++)
         {
-            num++;
-            sum=i;
-            if(n==num)
+            if(!a[i])
             {
-                break;
+                sum+=1;
             }
         }
+        printf("%d\n",sum);
     }
-    printf("%d\n",sum);
 }
