@@ -421,29 +421,63 @@
 // }
 
 // 2960문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n,m,sum=0;
+//     scanf("%d %d",&n,&m);
+//     int a[1001]={0};
+//     for(int i=2;i<=n;i++)
+//     {
+//         if(!a[i])
+//         {
+//             for(int j=i;j<=n;j+=i)
+//             {
+//                 if(!a[j])
+//                 {
+//                     a[j]=1;
+//                     sum++;
+//                     if (sum==m)
+//                     {
+//                         printf("%d\n",j);
+//                         return 0;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// 15965문제
 #include <stdio.h>
+int a[7400000]={0,};
 int main(void)
 {
-    int n,m,sum=0;
-    scanf("%d %d",&n,&m);
-    int a[1001]={0};
-    for(int i=2;i<=n;i++)
+    int sum=0;
+    int num=0;
+    int n;
+    scanf("%d",&n);
+    for(int i=2;i*i<=7400000;i++)
     {
         if(!a[i])
         {
-            for(int j=i;j<=n;j+=i)
+            for(int j=i*i;j<=7400000;j+=i)
             {
-                if(!a[j])
-                {
-                    a[j]=1;
-                    sum++;
-                    if (sum==m)
-                    {
-                        printf("%d\n",j);
-                        return 0;
-                    }
-                }
+               a[j]=1; 
             }
         }
     }
+    for(int i=2;i<=7400000;i++)
+    {
+        if(!a[i]&&n!=num)
+        {
+            num++;
+            sum=i;
+            if(n==num)
+            {
+                break;
+            }
+        }
+    }
+    printf("%d\n",sum);
 }
