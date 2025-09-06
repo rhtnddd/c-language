@@ -211,7 +211,7 @@
 //     }
 //     for(int i=0;i<n;i++)
 //     {
-//         printf("1");    
+//         printf("1");
 //     }
 //     return 0;
 // }
@@ -351,7 +351,7 @@
 // #include <queue>
 // using namespace std;
 // int main(void)
-// {   
+// {
 //     queue<int> q;
 //     int n,m,j=0,a[10000];
 //     cin >> n;
@@ -463,7 +463,7 @@
 //         {
 //             for(int j=i*i;j<=7400000;j+=i)
 //             {
-//                a[j]=1; 
+//                a[j]=1;
 //             }
 //         }
 //     }
@@ -503,7 +503,7 @@
 //             {
 //                 for(int j=i*i;j<=n*2;j+=i)
 //                 {
-//                    a[j]=1; 
+//                    a[j]=1;
 //                 }
 //             }
 //         }
@@ -538,7 +538,7 @@
 //         {
 //             for(int j=i*i;j<=1000000;j+=i)
 //             {
-//                 a[j]=1; 
+//                 a[j]=1;
 //             }
 //         }
 //     }
@@ -562,66 +562,83 @@
 // }
 
 // 16212문제
+// #include <stdio.h>
+// int a[500001];
+// int temp_a[500001];
+// void merge(int *a, int start,int middle,int end)
+// {
+//     int i=start;
+//     int j=middle+1;
+//     int k=start;
+//     while(i<=middle&&j<=end)
+//     {
+//         if(a[i]<=a[j])
+//         {
+//             temp_a[k]=a[i++];
+//         }
+//         else{
+//             temp_a[k]=a[j++];
+//         }
+//         k++;
+//     }
+//     if(i>middle){
+//         for(int t=j;t<=end;++t)
+//         {
+//             temp_a[k]=a[t];
+//             ++k;
+//         }
+//     }
+// 	else{
+// 		for(int t=i;t<=middle;++t){
+// 			temp_a[k] = a[t];
+// 			++k;
+// 		}
+// 	}
+// 	for(int t=start;t<=end;++t){
+// 		a[t] = temp_a[t];
+// 	}
+// }
+// void mergeSort(int *a,int start,int end)
+// {
+//     if(start<end){
+//         int middle=(start+end)/2;
+//         mergeSort(a,start,middle);
+//         mergeSort(a, middle+1, end);
+//         merge(a, start, middle, end);
+//     }
+// }
+// int main(void)
+// {
+//     int n;
+//     scanf("%d",&n);
+//     for(int i=0;i<n;i++)
+//     {
+//         scanf("%d",&a[i]);
+//     }
+//     mergeSort(a,0,n-1);
+//     for(int i=0;i<n;i++)
+//     {
+//         printf("%d",a[i]);
+//         if(i<n-1)
+//         {
+//             printf(" ");
+//         }
+//     }
+// }
+
+// 33871문제
 #include <stdio.h>
-int a[500001];
-int temp_a[500001];
-void merge(int *a, int start,int middle,int end)
-{
-    int i=start;
-    int j=middle+1;
-    int k=start;
-    while(i<=middle&&j<=end)
-    {
-        if(a[i]<=a[j])
-        {
-            temp_a[k]=a[i++];
-        }
-        else{
-            temp_a[k]=a[j++];
-        }
-        k++;
-    }
-    if(i>middle){
-        for(int t=j;t<=end;++t)
-        {
-            temp_a[k]=a[t];
-            ++k;
-        }
-    }
-	else{
-		for(int t=i;t<=middle;++t){
-			temp_a[k] = a[t];
-			++k;
-		}
-	}
-	for(int t=start;t<=end;++t){
-		a[t] = temp_a[t];
-	}
-}
-void mergeSort(int *a,int start,int end)
-{
-    if(start<end){
-        int middle=(start+end)/2;
-        mergeSort(a,start,middle);
-        mergeSort(a, middle+1, end);
-        merge(a, start, middle, end);
-    }
-}
 int main(void)
 {
     int n;
-    scanf("%d",&n);
-    for(int i=0;i<n;i++)
+    scanf("%d", &n);
+    if (n % 2 == 0)
     {
-        scanf("%d",&a[i]);
+        printf("Song");
     }
-    mergeSort(a,0,n-1);
-    for(int i=0;i<n;i++)
+    else
     {
-        printf("%d",a[i]);
-        if(i<n-1)
-        {
-            printf(" ");
-        }
+        printf("Soomin");
     }
+    return 0;
 }
