@@ -627,18 +627,51 @@
 // }
 
 // 33871문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n;
+//     scanf("%d", &n);
+//     if (n % 2 == 0)
+//     {
+//         printf("Song");
+//     }
+//     else
+//     {
+//         printf("Soomin");
+//     }
+//     return 0;
+// }
+
+// 1769문제
 #include <stdio.h>
+char a[1000001];
 int main(void)
 {
-    int n;
-    scanf("%d", &n);
-    if (n % 2 == 0)
+    int num = 0, num1 = 0, num2 = 0;
+    scanf("%s", a);
+    if (a[1] != '\0')
     {
-        printf("Song");
+        for (int i = 0; a[i] != '\0'; i++)
+        {
+            num += a[i] - '0';
+        }
+        num2++;
     }
     else
     {
-        printf("Soomin");
+        num = a[0] - '0';
     }
-    return 0;
+    while (num >= 10)
+    {
+        num1 = 0;
+        while (num > 0)
+        {
+            num1 += num % 10;
+            num /= 10;
+        }
+        num2++;
+        num = num1;
+    }
+    printf("%d\n%s", num2, num % 3 == 0 ? "YES" : "NO");
 }
