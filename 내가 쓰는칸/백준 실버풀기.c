@@ -644,34 +644,59 @@
 // }
 
 // 1769문제
+// #include <stdio.h>
+// char a[1000001];
+// int main(void)
+// {
+//     int num = 0, num1 = 0, num2 = 0;
+//     scanf("%s", a);
+//     if (a[1] != '\0')
+//     {
+//         for (int i = 0; a[i] != '\0'; i++)
+//         {
+//             num += a[i] - '0';
+//         }
+//         num2++;
+//     }
+//     else
+//     {
+//         num = a[0] - '0';
+//     }
+//     while (num >= 10)
+//     {
+//         num1 = 0;
+//         while (num > 0)
+//         {
+//             num1 += num % 10;
+//             num /= 10;
+//         }
+//         num2++;
+//         num = num1;
+//     }
+//     printf("%d\n%s", num2, num % 3 == 0 ? "YES" : "NO");
+// }
+// 11659문제
 #include <stdio.h>
-char a[1000001];
+#include <stdlib.h>
 int main(void)
 {
-    int num = 0, num1 = 0, num2 = 0;
-    scanf("%s", a);
-    if (a[1] != '\0')
+    int n, m;
+    int x, y;
+    scanf("%d %d", &n, &m);
+    int *a = (int *)malloc(sizeof(int) * (n + 1));
+    int *p = (int *)malloc(sizeof(int) * (n + 1));
+    p[0] = 0;
+    for (int i = 1; i <= n; i++)
     {
-        for (int i = 0; a[i] != '\0'; i++)
-        {
-            num += a[i] - '0';
-        }
-        num2++;
+        scanf("%d", &a[i]);
+        p[i] = p[i - 1] + a[i];
     }
-    else
+    for (int i = 0; i < m; i++)
     {
-        num = a[0] - '0';
+        scanf("%d %d", &x, &y);
+        printf("%d\n", p[y] - p[x - 1]);
     }
-    while (num >= 10)
-    {
-        num1 = 0;
-        while (num > 0)
-        {
-            num1 += num % 10;
-            num /= 10;
-        }
-        num2++;
-        num = num1;
-    }
-    printf("%d\n%s", num2, num % 3 == 0 ? "YES" : "NO");
+    free(a);
+    free(p);
+    return 0;
 }
