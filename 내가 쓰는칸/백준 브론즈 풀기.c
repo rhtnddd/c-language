@@ -24,32 +24,56 @@
 // }
 
 // 1978문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int n, sum = 0, m[101], a[1001] = {1, 1};
+//     scanf("%d", &n);
+//     for (int i = 0; i < n; i++)
+//     {
+//         scanf("%d", &m[i]);
+//     }
+//     for (int i = 2; i * i < 1001; i++)
+//     {
+//         for (int j = i * i; j < 1001; j += i)
+//         {
+//             if (!a[j])
+//             {
+//                 a[j] = 1;
+//             }
+//         }
+//     }
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (a[m[i]] == 0)
+//         {
+//             sum++;
+//         }
+//     }
+//     printf("%d\n", sum);
+//     return 0;
+// }
+
+// 1934문제
 #include <stdio.h>
 int main(void)
 {
-    int n, sum = 0, m[101], a[1001] = {1, 1};
+    int a, b, n;
+    long long int GCD = 0;
+    long long int LCM = 0;
     scanf("%d", &n);
     for (int i = 0; i < n; i++)
     {
-        scanf("%d", &m[i]);
-    }
-    for (int i = 2; i * i < 1001; i++)
-    {
-        for (int j = i * i; j < 1001; j += i)
+        scanf("%d %d", &a, &b);
+        for (int i = 1; i <= a; i++)
         {
-            if (!a[j])
+            if (a % i == 0 && b % i == 0)
             {
-                a[j] = 1;
+                GCD = i;
             }
         }
+        LCM = GCD * (a / GCD) * (b / GCD);
+        printf("%lld\n", LCM);
     }
-    for (int i = 0; i < n; i++)
-    {
-        if (a[m[i]] == 0)
-        {
-            sum++;
-        }
-    }
-    printf("%d\n", sum);
     return 0;
 }
