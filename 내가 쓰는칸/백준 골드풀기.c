@@ -221,29 +221,75 @@
 // }
 
 // 1016문제
+// #include <stdio.h>
+// #include <stdlib.h>
+// int sum=0;
+// int main(void)
+// {
+//     long long int n,m;
+//     int sum=0;
+//     scanf("%lld %lld",&n,&m);
+//     char *a=(char*)calloc(m-n+1,sizeof(char));
+//     for(long long int i=2;i*i<=m;i++)
+//     {
+//         for(long long int j=(n+(i*i)-1)/(i*i)*(i*i);j<=m;j+=(i*i))
+//         {
+//             a[j-n]=1;
+//         }
+//     }
+//     for(int i=0;i<m-n+1;i++)
+//     {
+//         if(!a[i])
+//         {
+//             sum++;
+//         }
+//     }
+//     printf("%d\n",sum);
+//     return 0;
+// }
+
+// 11444문제
 #include <stdio.h>
-#include <stdlib.h>
-int sum=0;
-int main(void)
+typedef unsigned long long a;
+void mul(a b[2][2], a c[2][2])
 {
-    long long int n,m;
-    int sum=0;
-    scanf("%lld %lld",&n,&m);
-     char *a=(char*)calloc(m-n+1,sizeof(char));
-    for(long long int i=2;i*i<=m;i++)
+    a x = ((b[0][0] * c[0][0]) + (b[0][1] * c[1][0])) % 1000000007;
+    a y = ((b[0][0] * c[0][1]) + (b[0][1] * c[1][1])) % 1000000007;
+    a m = ((b[1][0] * c[0][0]) + (b[1][1] * c[1][0])) % 1000000007;
+    a z = ((b[1][0] * c[0][1]) + (b[1][1] * c[1][1])) % 1000000007;
+    b[0][0] = x;
+    b[0][1] = y;
+    b[1][0] = m;
+    b[1][1] = z;
+}
+void gud(a m[2][2], a n)
+{
+    a r[2][2] = {{1, 0}, {0, 1}};
+    while (n > 0)
     {
-        for(long long int j=(n+(i*i)-1)/(i*i)*(i*i);j<=m;j+=(i*i))
+        if (n % 2 == 1)
         {
-            a[j-n]=1;
+            mul(r, m);
         }
+
+        mul(m, m);
+        n /= 2;
     }
-    for(int i=0;i<m-n+1;i++)
+    m[0][0] = r[0][0];
+    m[0][1] = r[0][1];
+    m[1][0] = r[1][0];
+    m[1][1] = r[1][1];
+}
+int main()
+{
+    a n;
+    scanf("%llu", &n);
+    if (n == 0)
     {
-        if(!a[i])
-        {
-            sum++;
-        }
+        printf("1\n");
+        return 0;
     }
-    printf("%d\n",sum);
-    return 0;
+    a m[2][2] = {{0, 1}, {1, 1}};
+    gud(m, n - 1);
+    printf("%llu\n", m[1][1]);
 }
