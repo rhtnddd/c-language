@@ -55,25 +55,47 @@
 // }
 
 // 1934문제
+// #include <stdio.h>
+// int main(void)
+// {
+//     int a, b, n;
+//     long long int GCD = 0;
+//     long long int LCM = 0;
+//     scanf("%d", &n);
+//     for (int i = 0; i < n; i++)
+//     {
+//         scanf("%d %d", &a, &b);
+//         for (int i = 1; i <= a; i++)
+//         {
+//             if (a % i == 0 && b % i == 0)
+//             {
+//                 GCD = i;
+//             }
+//         }
+//         LCM = GCD * (a / GCD) * (b / GCD);
+//         printf("%lld\n", LCM);
+//     }
+//     return 0;
+// }
+
+// 10989문제
 #include <stdio.h>
+int c[10001];
 int main(void)
 {
-    int a, b, n;
-    long long int GCD = 0;
-    long long int LCM = 0;
+    int n, x;
     scanf("%d", &n);
     for (int i = 0; i < n; i++)
     {
-        scanf("%d %d", &a, &b);
-        for (int i = 1; i <= a; i++)
+        scanf("%d", &x);
+        c[x]++;
+    }
+    for (int i = 1; i <= 10000; i++)
+    {
+        while (c[i]--)
         {
-            if (a % i == 0 && b % i == 0)
-            {
-                GCD = i;
-            }
+            printf("%d\n", i);
         }
-        LCM = GCD * (a / GCD) * (b / GCD);
-        printf("%lld\n", LCM);
     }
     return 0;
 }
