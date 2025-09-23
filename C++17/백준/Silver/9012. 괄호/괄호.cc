@@ -2,18 +2,18 @@
 #include <string.h>
 void VPS()
 {
-    char PS[51];
-    scanf("%s",PS);
+    char p[51];
+    scanf("%s",p);
     char stack[51];
     int top=-1;
-    int len=strlen(PS);
+    int len=strlen(p);
     for(int j=0;j<len;j++)
     {
-        if(PS[j]=='(')
+        if(p[j]=='(')
         {
             stack[++top]='(';
         }
-        else if(PS[j]==')')
+        else if(p[j]==')')
         {
             if(top==-1)
             {
